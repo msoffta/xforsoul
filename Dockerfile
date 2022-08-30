@@ -9,9 +9,9 @@ RUN pip3 install -U pip
 
 RUN cd /
 
-RUN git clone https://github.com/msoffta/xforsoul
-
 RUN cd xforsoul
+
+RUN git fetch https://github.com/msoffta/xforsoul
 
 WORKDIR /xforsoul
 
