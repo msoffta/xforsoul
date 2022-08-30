@@ -11,7 +11,7 @@ RUN cd /
 
 RUN git clone https://github.com/msoffta/xforsoul
 
-RUN git pull https://github.com/msoffta/xforsoul
+RUN git fetch https://github.com/msoffta/xforsoul
 
 RUN cd xforsoul
 
