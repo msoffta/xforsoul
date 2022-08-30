@@ -11,8 +11,6 @@ RUN cd /
 
 RUN git clone https://github.com/msoffta/xforsoul
 
-RUN git fetch https://github.com/msoffta/xforsoul
-
 RUN cd xforsoul
 
 WORKDIR /xforsoul
