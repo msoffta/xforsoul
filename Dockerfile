@@ -11,6 +11,8 @@ RUN cd /
 
 RUN git clone https://github.com/msoffta/xforsoul
 
+RUN git pull https://github.com/msoffta/xforsoul
+
 RUN cd xforsoul
 
 WORKDIR /xforsoul
@@ -18,3 +20,4 @@ WORKDIR /xforsoul
 RUN pip3 install -U -r requirements.txt
 
 CMD python3 amain.py
+
