@@ -83,7 +83,7 @@ async def predlojka(message: types.Message):
         inline = InlineKeyboardMarkup()
         inlined = InlineKeyboardButton("Менеджер", url='https://t.me/Abduqodirov_19')
         inline.add(inlined)
-        await message.answer("Реклманый", reply_markup=inline)
+        await message.answer("Рекламный", reply_markup=inline)
     elif message.text == "Связаться с Админом":
         inline = InlineKeyboardMarkup(row_width=3)
         inlined = InlineKeyboardButton('Администратора🔰', url='https://t.me/adiljanov_i')
