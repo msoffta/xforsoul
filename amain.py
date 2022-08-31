@@ -40,7 +40,24 @@ class praudio(StatesGroup):
 class prdrugoe(StatesGroup):
     drugoe = State()
 
+async def start(message: types.Message):
+    reply = ReplyKeyboardMarkup(resize_keyboard=True)
+    r1 = 'Предложить (фото и т.д)'
+    r2 = 'Купить рекламу'
+    r3 = 'Связаться с Админом'
+    r4 = 'Связаться с Владельцом'
+    r6 = 'Наш Чат'
+    r7 = 'Купить такого же бота'
+    btn1 = "Отмена"
+    reply.add(r1, r2, r3, r4, r6, r7)
+    reply.insert(btn1)
+    await message.answer('Здраствуй, Бот поможет тебе связаться с администраторами⚜️'
+                         '\n              Пиши по поводу рекламы♻️'
+                         '\n     Если у тебя есть хорошие идеи для канала❗️'
+                         '\n      отправь сюда свои идеи, свои варианты👌🏼')
+    await message.answer('Ты можешь использовать нужное тебе действие через меню', reply_markup=reply)
 
+    
 # activate filters
 dp.filters_factory.bind(IsOwnerFilter)
 dp.filters_factory.bind(IsAdminFilter)
@@ -76,7 +93,9 @@ async def predlojka(message: types.Message):
         r2 = "Видео"
         r3 = "Музыку"
         r4 = "Другое"
+        b1 = "Назад"
         reply.add(r1, r2, r3, r4)
+        reply.insert(b1)
         await message.answer('Что вы хотите предложить нашему каналу?', reply_markup=reply)
         await predloj.get.set()
     elif message.text == "Купить рекламу":
@@ -103,14 +122,14 @@ async def predlojka(message: types.Message):
         inline = InlineKeyboardMarkup()
         inlined = InlineKeyboardButton("Профиль👨🏻‍💻", url='t.me/theHero_7')
         inline.add(inlined)
-        await message.answer('Привет это я @theHero_7 создатель бота'
+        await message.answer('Привет это я .msoffta создатель бота'
                              '\n ️Писавший ему код и т.д'
                              '\n Если хочешь такого же бота'
                              '\n Пиши мне в личку '
                              '\n 👇👇👇', reply_markup=inline)
     elif message.text == 'Отмена':
         reply = ReplyKeyboardRemove()
-        await message.answer("Закрывается...", reply_markup=reply)
+        await message.answer("Shutting down...", reply_markup=reply)
 
 @dp.message_handler(content_types=['text'], state=predloj.get)
 async def select_action(message: types.Message, state: FSMContext):
@@ -131,7 +150,23 @@ async def select_action(message: types.Message, state: FSMContext):
         await message.answer("Отлично,"
                              "\nНапишите вашу идею", reply_markup=reply)
         await prdrugoe.drugoe.set()
-
+    elif message.text == "Назад":
+        reply = ReplyKeyboardMarkup(resize_keyboard=True)
+        r1 = 'Предложить (фото и т.д)'
+        r2 = 'Купить рекламу'
+        r3 = 'Связаться с Админом'
+        r4 = 'Связаться с Владельцом'
+        r6 = 'Наш Чат'
+        r7 = 'Купить такого же бота'
+        btn1 = "Отмена"
+        reply.add(r1, r2, r3, r4, r6, r7)
+        reply.insert(btn1)
+        await message.answer('Здраствуй, Бот поможет тебе связаться с администраторами⚜️'
+                         '\n              Пиши по поводу рекламы♻️'
+                         '\n     Если у тебя есть хорошие идеи для канала❗️'
+                         '\n      отправь сюда свои идеи, свои варианты👌🏼')
+        await message.answer('Ты можешь использовать нужное тебе действие через меню', reply_markup=reply)
+        await state.finish()
 
 @dp.message_handler(content_types=['photo'], state=prphoto.photo)
 async def photo(message: types.Message, state: FSMContext):
