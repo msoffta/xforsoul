@@ -1,5 +1,5 @@
 #!/bin/bash
-screen -r 36071
+screen -r 113527
 kill -9 amain.py
 git pull
-python amain.py &
+python amain.pys
