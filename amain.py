@@ -62,9 +62,11 @@ async def update(message: types.Message):
 
 @dp.message_handler(commands='start')
 async def start(message: types.Message):
-    await bot.send_message(message.chat.id,
-                           f'@{message.from_user.username, message.from_user.id, message.from_user.first_name}'
-                           f'\n Запустил бота')
+    user_id = message.from_user.id
+    user_name = message.from_user.first_name
+    username = message.from_user.username
+    await bot.send_message(config.BOT_CHAT, f'@{username}, {user_id}, {user_name}'
+                                            f'\nЗапустил бота')
     reply = ReplyKeyboardMarkup(resize_keyboard=True)
     r1 = 'Предложить (фото и т.д)'
     r2 = 'Купить рекламу'
