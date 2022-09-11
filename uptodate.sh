@@ -1,4 +1,4 @@
 #!/bin/bash
-killall -9 amain.py
+killall -9 python3
 git pull
 python amain.py
