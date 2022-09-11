@@ -13,11 +13,11 @@ logging.basicConfig(level=logging.INFO)
 
 # init bot
 async def on_startup(dp):
-    await bot.send_message(config.BOT_OWNER, "Бот запущен")
+    await bot.send_message(config.BOT_CHAT, "Бот запущен")
 
 
 async def on_shutdown(dp):
-    await bot.send_message(config.BOT_OWNER, "Бот выключен")
+    await bot.send_message(config.BOT_CHAT, "Бот выключен")
 
 
 storage = MemoryStorage()
@@ -339,9 +339,6 @@ async def back(message: types.Message, state: FSMContext):
                              '\n      отправь сюда свои идеи, свои варианты👌🏼')
         await message.answer('Ты можешь использовать нужное тебе действие через меню', reply_markup=reply)
         await state.finish()
-
-
-
 
 
 if __name__ == '__main__':
