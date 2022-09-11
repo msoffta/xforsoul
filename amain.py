@@ -54,6 +54,12 @@ dp.filters_factory.bind(IsOwnerFilter)
 dp.filters_factory.bind(IsAdminFilter)
 
 
+@dp.message_handler(is_owner=True, commands='update')
+async def update(message: types.Message):
+    await message.answer("Проверяем на наличие обновлений")
+    os.system("bash uptodate.sh")
+
+
 @dp.message_handler(commands='start')
 async def start(message: types.Message):
     await bot.send_message(message.chat.id,
@@ -333,10 +339,7 @@ async def back(message: types.Message, state: FSMContext):
         await state.finish()
 
 
-@dp.message_handler(is_owner=True, commands='update')
-async def update(message: types.Message):
-    await message.answer("Проверяем на наличие обновлений")
-    os.system("bash uptodate.sh")
+
 
 
 if __name__ == '__main__':
