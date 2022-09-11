@@ -335,6 +335,6 @@ async def back(message: types.Message, state: FSMContext):
 @dp.message_handler(is_owner=True, commands='update')
 async def command(message: types.Message):
     await message.answer("Проверяем на наличие обновлений")
-    os.execl('uptodate.sh', '')
+    os.system('bash uptodate.sh')
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True, on_startup=on_startup, on_shutdown=on_shutdown)
