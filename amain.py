@@ -134,7 +134,8 @@ async def predlojka(message: types.Message):
                              '\n 👇👇👇', reply_markup=inline)
     elif message.text == 'Отмена':
         reply = ReplyKeyboardRemove()
-        await message.answer("Shutting down...", reply_markup=reply)
+        await message.answer("Чтоб перезапустить бота"
+                             "\n напишите /start", reply_markup=reply)
 
 
 @dp.message_handler(content_types=['text'], state=predloj.get)
