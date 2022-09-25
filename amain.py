@@ -84,6 +84,10 @@ async def start(message: types.Message):
     await message.answer('Ты можешь использовать нужное тебе действие через меню', reply_markup=reply)
 
 
+@dp.message_handler(commands='all', commands_prefix='@')
+async def tag_all(message: types.Message):
+    members = bot.get_chat_members_count(message.chat.id)
+    await message.answer(members)
 @dp.message_handler(commands='delete_b')
 async def remove_b(message: types.Message):
     markup = ReplyKeyboardRemove()
